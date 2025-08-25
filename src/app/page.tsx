@@ -17,9 +17,7 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown } from "lucide-react";
 
-export const metadata = {
-  title: "Tuition Program",
-};
+
 
 const Page = () => {
 

@@ -8,10 +8,6 @@ import emailjs from "@emailjs/browser";
 import { useRouter } from "next/navigation";
 import { GrFormNextLink } from "react-icons/gr";
 
-export const metadata = {
-  title: "Tuition Program - GCSE Foundation",
-};
-
 const Page = () => {
   const questions = [
     [
