@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./globals.css";
 import { useRouter } from "next/navigation";
 import {
@@ -17,7 +17,12 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown } from "lucide-react";
 
+export const metadata = {
+  title: "Tuition Program",
+};
+
 const Page = () => {
+
   const router = useRouter();
   const [role, setRole] = useState<string>("Select role");
   const [name, setName] = useState<string>("");
