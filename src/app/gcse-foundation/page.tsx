@@ -84,7 +84,7 @@ const Page = () => {
         const userAnswers = answers[setIndex]?.[qIndex] || {};
         const correctSet = new Set(correct);
         const selected = Object.entries(userAnswers)
-          .filter(([_, checked]) => checked)
+          .filter(([, checked]) => checked)
           .map(([ans]) => ans);
 
         const isCorrect =
