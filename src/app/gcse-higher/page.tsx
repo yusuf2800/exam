@@ -137,8 +137,6 @@ const Page = () => {
             <GrFormNextLink size={25} className="rotate-180" />
           </button>
 
-          
-
           <button
             className="hover:bg-blue flex h-[28px] w-[60px] cursor-pointer items-center justify-center rounded-sm bg-[#0f1a24] px-2 text-white disabled:opacity-50"
             onClick={handleNextQuestionSet}
@@ -168,7 +166,7 @@ const Page = () => {
           {questions[currentQuestionSet].map(
             ({ question, answer }, questionIndex) => {
               const questionId = String(questionIndex + 1);
-              const isLastQuestionInSet = 
+              const isLastQuestionInSet =
                 Number(currentTab) === questions[currentQuestionSet].length;
               const isLastSet = currentQuestionSet === questions.length - 1;
 
@@ -205,7 +203,7 @@ const Page = () => {
                                     ...(prev[currentQuestionSet]?.[
                                       questionIndex
                                     ] || {}),
-                                    [ans]: checked,
+                                    [ans]: checked === true,
                                   },
                                 },
                               }));
