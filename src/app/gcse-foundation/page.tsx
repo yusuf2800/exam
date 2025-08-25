@@ -16,8 +16,7 @@ const Page = () => {
       { question: 3, answer: ["A", "B", "C", "D"], correct: ["C"] },
       { question: 4, answer: ["A", "B", "C", "D"], correct: ["D"] },
       { question: 5, answer: ["A", "B", "C", "D"], correct: ["A"] },
-    ],
-    [
+    ],[
       { question: 6, answer: ["A", "B", "C", "D"], correct: ["B"] },
       { question: 7, answer: ["A", "B", "C", "D"], correct: ["C"] },
       { question: 8, answer: ["A", "B", "C", "D"], correct: ["C"] },
