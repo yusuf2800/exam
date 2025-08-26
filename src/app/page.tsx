@@ -101,9 +101,9 @@ const Page = () => {
                     GCSEs
                   </DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
-                    <DropdownMenuSubContent className="rounded-lg border border-[#2e485a] bg-[#172636] text-[#87a6bb] shadow-xl">
+                    <DropdownMenuSubContent className="rounded-lg border border-[#2e485a] ml-1.5 bg-[#172636] text-[#87a6bb] shadow-xl">
                       <DropdownMenuItem
-                        className="cursor-pointer px-3 py-2 hover:bg-[#111a22]"
+                        className="cursor-pointer px-3 py-2 hover:bg-amber-200"
                         onClick={() => setRole("GCSE Foundation")}
                       >
                         Foundation
