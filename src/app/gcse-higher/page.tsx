@@ -127,7 +127,7 @@ const Page = () => {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-[#0d1419] p-6">
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <div className="mb-4 flex items-center justify-between">
           <button
             className="hover:bg-blue flex h-[28px] w-[60px] cursor-pointer items-center justify-center rounded-sm bg-[#0f1a24] px-2 text-white disabled:opacity-50"
@@ -176,10 +176,10 @@ const Page = () => {
                   value={questionId}
                   className="mb-20 flex flex-col items-center space-y-6 rounded-lg bg-[#0f1a24] py-6 text-center text-white shadow-xl"
                 >
-                  <div className="text-lg font-semibold flex justify-center items-center">
+                  <div className="flex items-center justify-center text-lg font-semibold">
                     <img
                       src={`gcse-higher-image/${currentQuestionSet * 5 + questionIndex + 1}.png`}
-                      className="h-auto w-full sm:w-[65%] rounded-sm "
+                      className="h-auto w-full rounded-sm sm:w-[65%]"
                     />
                   </div>
 

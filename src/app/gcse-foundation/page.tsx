@@ -16,7 +16,8 @@ const Page = () => {
       { question: 3, answer: ["A", "B", "C", "D"], correct: ["C"] },
       { question: 4, answer: ["A", "B", "C", "D"], correct: ["D"] },
       { question: 5, answer: ["A", "B", "C", "D"], correct: ["A"] },
-    ],[
+    ],
+    [
       { question: 6, answer: ["A", "B", "C", "D"], correct: ["B"] },
       { question: 7, answer: ["A", "B", "C", "D"], correct: ["C"] },
       { question: 8, answer: ["A", "B", "C", "D"], correct: ["C"] },
@@ -126,7 +127,7 @@ const Page = () => {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-[#0d1419] p-6">
-      <div className="w-full max-w-[800px]">
+      <div className="w-full">
         <div className="mb-4 flex items-center justify-between">
           <button
             className="hover:bg-blue flex h-[28px] w-[60px] cursor-pointer items-center justify-center rounded-sm bg-[#0f1a24] px-2 text-white disabled:opacity-50"
@@ -175,8 +176,11 @@ const Page = () => {
                   value={questionId}
                   className="mb-20 flex flex-col items-center space-y-6 rounded-lg bg-[#0f1a24] py-6 text-center text-white shadow-xl"
                 >
-                  <div className="text-lg font-semibold">
-                    Question {question}
+                  <div className="text-lg font-semibold flex justify-center items-center">
+                    <img
+                      src={`gcse-foundation-image/${currentQuestionSet * 5 + questionIndex + 1}.png`}
+                      className="h-auto w-full rounded-sm sm:w-[65%]"
+                    />
                   </div>
 
                   <div className="flex flex-col gap-4">
@@ -202,7 +206,7 @@ const Page = () => {
                                     ...(prev[currentQuestionSet]?.[
                                       questionIndex
                                     ] || {}),
-                                    [ans]: checked === true, 
+                                    [ans]: checked === true,
                                   },
                                 },
                               }));
@@ -220,48 +224,6 @@ const Page = () => {
                   </div>
 
                   <div className="flex gap-x-5">
-                    <button
-                      className="cursor-pointer rounded-full bg-[#2094e4] px-6 py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
-                      onClick={() => setShowModal(true)}
-                    >
-                      View Image
-                    </button>
-
-                    <AnimatePresence>
-                      {showModal && (
-                        <motion.div
-                          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <motion.div
-                            className="flex h-[80%] w-[80%] flex-col items-center justify-center rounded-lg bg-[#0f1a24] shadow-xl"
-                            initial={{ opacity: 0, y: "100%" }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: "100%" }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 20,
-                            }}
-                          >
-                            <img
-                              src={`gcse-foundation-image/${currentQuestionSet * 5 + questionIndex + 1}.png`}
-                              className="h-auto w-[600px] rounded-sm"
-                            />
-                            <button
-                              className="mt-5 w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
-                              onClick={() => setShowModal(false)}
-                            >
-                              Close
-                            </button>
-                          </motion.div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
                     {!isLastQuestionInSet ? (
                       <button
                         className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
