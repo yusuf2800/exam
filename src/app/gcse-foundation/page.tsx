@@ -57,7 +57,6 @@ const Page = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
-  const [showModal, setShowModal] = useState(false);
   const [student, setStudent] = useState({ name: "", email: "", role: "" });
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
@@ -164,7 +163,7 @@ const Page = () => {
           </div>
 
           {questions[currentQuestionSet].map(
-            ({ question, answer }, questionIndex) => {
+            ({ answer }, questionIndex) => {
               const questionId = String(questionIndex + 1);
               const isLastQuestionInSet =
                 Number(currentTab) === questions[currentQuestionSet].length;

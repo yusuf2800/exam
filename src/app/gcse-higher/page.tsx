@@ -57,7 +57,6 @@ const Page = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
-  const [showModal, setShowModal] = useState(false);
   const [student, setStudent] = useState({ name: "", email: "", role: "" });
   const [showScoreModal, setShowScoreModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
@@ -163,100 +162,98 @@ const Page = () => {
             </TabsList>
           </div>
 
-          {questions[currentQuestionSet].map(
-            ({ question, answer }, questionIndex) => {
-              const questionId = String(questionIndex + 1);
-              const isLastQuestionInSet =
-                Number(currentTab) === questions[currentQuestionSet].length;
-              const isLastSet = currentQuestionSet === questions.length - 1;
+          {questions[currentQuestionSet].map(({ answer }, questionIndex) => {
+            const questionId = String(questionIndex + 1);
+            const isLastQuestionInSet =
+              Number(currentTab) === questions[currentQuestionSet].length;
+            const isLastSet = currentQuestionSet === questions.length - 1;
 
-              return (
-                <TabsContent
-                  key={questionId}
-                  value={questionId}
-                  className="mb-20 flex flex-col items-center space-y-6 rounded-lg bg-[#0f1a24] py-6 text-center text-white shadow-xl"
-                >
-                  <div className="flex items-center justify-center text-lg font-semibold">
-                    <img
-                      src={`gcse-higher-image/${currentQuestionSet * 5 + questionIndex + 1}.png`}
-                      className="h-auto w-full rounded-sm sm:w-[65%]"
-                    />
-                  </div>
+            return (
+              <TabsContent
+                key={questionId}
+                value={questionId}
+                className="mb-20 flex flex-col items-center space-y-6 rounded-lg bg-[#0f1a24] py-6 text-center text-white shadow-xl"
+              >
+                <div className="flex items-center justify-center text-lg font-semibold">
+                  <img
+                    src={`gcse-higher-image/${currentQuestionSet * 5 + questionIndex + 1}.png`}
+                    className="h-auto w-full rounded-sm sm:w-[65%]"
+                  />
+                </div>
 
-                  <div className="flex flex-col gap-4">
-                    {answer.map((ans, ansIndex) => {
-                      const id = `set${currentQuestionSet}-q${questionIndex}-a${ansIndex}`;
-                      return (
-                        <div className="flex items-center gap-2" key={id}>
-                          <Checkbox
-                            id={id}
-                            checked={
-                              answers[currentQuestionSet]?.[questionIndex]?.[
-                                ans
-                              ] || false
-                            }
-                            disabled={submitted}
-                            onCheckedChange={(checked) => {
-                              if (submitted) return;
-                              setAnswers((prev) => ({
-                                ...prev,
-                                [currentQuestionSet]: {
-                                  ...(prev[currentQuestionSet] || {}),
-                                  [questionIndex]: {
-                                    ...(prev[currentQuestionSet]?.[
-                                      questionIndex
-                                    ] || {}),
-                                    [ans]: checked === true,
-                                  },
+                <div className="flex flex-col gap-4">
+                  {answer.map((ans, ansIndex) => {
+                    const id = `set${currentQuestionSet}-q${questionIndex}-a${ansIndex}`;
+                    return (
+                      <div className="flex items-center gap-2" key={id}>
+                        <Checkbox
+                          id={id}
+                          checked={
+                            answers[currentQuestionSet]?.[questionIndex]?.[
+                              ans
+                            ] || false
+                          }
+                          disabled={submitted}
+                          onCheckedChange={(checked) => {
+                            if (submitted) return;
+                            setAnswers((prev) => ({
+                              ...prev,
+                              [currentQuestionSet]: {
+                                ...(prev[currentQuestionSet] || {}),
+                                [questionIndex]: {
+                                  ...(prev[currentQuestionSet]?.[
+                                    questionIndex
+                                  ] || {}),
+                                  [ans]: checked === true,
                                 },
-                              }));
-                            }}
-                          />
-                          <label
-                            htmlFor={id}
-                            className="cursor-pointer text-sm select-none"
-                          >
-                            {ans}
-                          </label>
-                        </div>
-                      );
-                    })}
-                  </div>
+                              },
+                            }));
+                          }}
+                        />
+                        <label
+                          htmlFor={id}
+                          className="cursor-pointer text-sm select-none"
+                        >
+                          {ans}
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
 
-                  <div className="flex gap-x-5">
-                    {!isLastQuestionInSet ? (
-                      <button
-                        className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
-                        onClick={() => {
-                          setCurrentTab(nextTab);
-                        }}
-                      >
-                        Next
-                      </button>
-                    ) : isLastSet ? (
-                      <button
-                        className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
-                        onClick={() => {
-                          handleSubmitQuiz();
-                          setShowScoreModal(true);
-                        }}
-                        disabled={submitted}
-                      >
-                        Submit
-                      </button>
-                    ) : (
-                      <button
-                        className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
-                        onClick={handleNextQuestionSet}
-                      >
-                        Next
-                      </button>
-                    )}
-                  </div>
-                </TabsContent>
-              );
-            },
-          )}
+                <div className="flex gap-x-5">
+                  {!isLastQuestionInSet ? (
+                    <button
+                      className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
+                      onClick={() => {
+                        setCurrentTab(nextTab);
+                      }}
+                    >
+                      Next
+                    </button>
+                  ) : isLastSet ? (
+                    <button
+                      className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
+                      onClick={() => {
+                        handleSubmitQuiz();
+                        setShowScoreModal(true);
+                      }}
+                      disabled={submitted}
+                    >
+                      Submit
+                    </button>
+                  ) : (
+                    <button
+                      className="w-[120px] cursor-pointer rounded-full bg-[#2094e4] py-1.5 text-sm font-semibold text-gray-900 hover:bg-[#187dc0]"
+                      onClick={handleNextQuestionSet}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              </TabsContent>
+            );
+          })}
         </Tabs>
 
         {submitted && (
